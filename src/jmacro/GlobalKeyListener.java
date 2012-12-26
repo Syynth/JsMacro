@@ -25,6 +25,16 @@ public class GlobalKeyListener implements NativeKeyListener {
                     canStart = false;
                 }
             }
+            if (e.getKeyCode() == NativeKeyEvent.VK_F7) {
+                if (macroData != null && activeMacro != null) {
+                    activeMacro.pause();
+                }
+            }
+            if (e.getKeyCode() == NativeKeyEvent.VK_F8) { 
+                if (macroData != null && activeMacro != null) {
+                    activeMacro.proceed();
+                }
+            }
             if (e.getKeyCode() == NativeKeyEvent.VK_F5 && canStart) {
                 activeMacro = new Macro(macroData);
                 activeMacro.start();

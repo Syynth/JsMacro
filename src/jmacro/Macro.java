@@ -10,6 +10,7 @@ public class Macro extends Thread {
     
     boolean abort = false;
     boolean running = false;
+    boolean paused = false;
     
     public Macro(MacroData macroData) {
         this.macroData = macroData;
@@ -17,6 +18,14 @@ public class Macro extends Thread {
     
     public void abort() {
         abort = true;
+    }
+    
+    public void pause() {
+        paused = true;
+    }
+    
+    public void proceed() {
+        paused = false;
     }
     
     @Override
@@ -36,6 +45,10 @@ public class Macro extends Thread {
         }
         for (int i = 0; i < macroData.getNumberOfEntries(); i++) {
             if (abort) { break; }
+            if (paused) {
+                i--;
+                continue;
+            }
             for (String cmd : macroData.getCommandList("item")) {
                 if (abort) { break; }
                 executeCommand(cmd);
@@ -56,11 +69,11 @@ public class Macro extends Thread {
             if (abort) { break; }
             executeCommand(cmd);
         }
-        macroData.resetEntryPosition();
         if (abort) {
             JOptionPane.showMessageDialog(null, "Last active record was " + 
                     macroData.getField(0));
         }
+        macroData.resetEntryPosition();
         abort = false;
         running = false;
         macroData.getWindow().setVisible(true);
