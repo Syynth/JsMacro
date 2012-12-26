@@ -79,7 +79,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         setTitle("Macro Typist");
         setResizable(false);
 
-        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.1"));
+        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.2"));
 
         dataButton.setText("...");
         dataButton.addActionListener(new java.awt.event.ActionListener() {
@@ -159,6 +159,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
+
+        titlePanel.getAccessibleContext().setAccessibleName("Macro Typist v0.2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
