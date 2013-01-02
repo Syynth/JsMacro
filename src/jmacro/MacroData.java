@@ -134,11 +134,12 @@ public class MacroData {
     private class MacroDataItem {
         
         String[] fields;
+        private final int fieldWidth = 32;
         
         public MacroDataItem(String data) {
             fields = new String[(int)Math.ceil(data.length() * 1.0 / 32.0)];
             for (int i = 0; i < fields.length; i++) {
-                fields[i] = data.substring(i * 32, Math.min((i + 1) * 32, data.length())).trim();
+                fields[i] = data.substring(i * fieldWidth, Math.min((i + 1) * fieldWidth, data.length())).trim();
             }
         }
         
