@@ -117,6 +117,9 @@ public class MacroData {
             return getEntrySize() + "<" + n;
         }
     }
+    public String getCurrentEntry() {
+        return items.get(currentEntry).toString();
+    }
     public JFrame getWindow() { return window; }
     
     @Override
