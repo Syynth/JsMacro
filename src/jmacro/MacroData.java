@@ -149,13 +149,16 @@ public class MacroData {
         @Override
         public String toString() {
             String s;
-            s = "[";
+            s = "[ ";
             if (fields != null) {
                 for (int i = 0; i < fields.length; i++) {
-                    s += fields[i] + ",";
+                    s += fields[i];
+                    if (i < fields.length - 1) {
+                        s += ", ";
+                    }
                 }
             }
-            s += "]";
+            s += " ]";
             return s;
         }
     }
