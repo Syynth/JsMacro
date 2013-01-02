@@ -70,8 +70,7 @@ public class Macro extends Thread {
             executeCommand(cmd);
         }
         if (abort) {
-            JOptionPane.showMessageDialog(null, "Last active record was " + 
-                    macroData.getField(0));
+            JOptionPane.showMessageDialog(null, "Last active record was " + macroData);
         }
         macroData.resetEntryPosition();
         abort = false;
