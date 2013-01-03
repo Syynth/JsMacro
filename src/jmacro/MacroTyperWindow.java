@@ -7,6 +7,8 @@ package jmacro;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JFileChooser;
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -74,6 +76,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         formatField = new javax.swing.JTextField();
         formatButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Macro Typist");
@@ -106,6 +109,13 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
+        jButton1.setText("Info");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
         titlePanelLayout.setHorizontalGroup(
@@ -120,7 +130,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(dataButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(startButton))
                     .addGroup(titlePanelLayout.createSequentialGroup()
                         .addContainerGap()
@@ -145,7 +157,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                     .addComponent(formatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(formatButton))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(startButton)
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(startButton)
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -159,8 +173,6 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
-
-        titlePanel.getAccessibleContext().setAccessibleName("Macro Typist v0.2");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -197,6 +209,12 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             macroData.setData(c.getSelectedFile());
         }
     }//GEN-LAST:event_dataButtonActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        InfoDialog id = new InfoDialog();
+        id.setVisible(true);
+        id.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_jButton1ActionPerformed
     
     /**
      * @param args the command line arguments
@@ -228,6 +246,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JButton formatButton;
     private javax.swing.JTextField formatField;
     private javax.swing.JLabel formatLabel;
+    private javax.swing.JButton jButton1;
     private javax.swing.JButton startButton;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
