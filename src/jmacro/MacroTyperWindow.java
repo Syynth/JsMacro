@@ -76,13 +76,14 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         formatField = new javax.swing.JTextField();
         formatButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        infoButton = new javax.swing.JButton();
+        editButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Macro Typist");
         setResizable(false);
 
-        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.2"));
+        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.3"));
 
         dataButton.setText("...");
         dataButton.addActionListener(new java.awt.event.ActionListener() {
@@ -109,10 +110,17 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Info");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        infoButton.setText("Info");
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                infoButtonActionPerformed(evt);
+            }
+        });
+
+        editButton.setText("Edit MFL File");
+        editButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editButtonActionPerformed(evt);
             }
         });
 
@@ -122,25 +130,29 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(titlePanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(dataLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dataField, javax.swing.GroupLayout.DEFAULT_SIZE, 206, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dataButton))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jButton1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(infoButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
+                        .addComponent(editButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(startButton))
                     .addGroup(titlePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(formatLabel)
+                        .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(titlePanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(dataLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dataField))
+                            .addGroup(titlePanelLayout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(formatLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(formatField)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(formatField)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(formatButton)))
+                        .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(formatButton, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(dataButton, javax.swing.GroupLayout.Alignment.TRAILING))))
                 .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
@@ -159,7 +171,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startButton)
-                    .addComponent(jButton1))
+                    .addComponent(infoButton)
+                    .addComponent(editButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -210,11 +223,19 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dataButtonActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
         InfoDialog id = new InfoDialog();
         id.setVisible(true);
         id.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_infoButtonActionPerformed
+
+    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+        if (!formatField.getText().equals("")) {
+            EditDialog ed = new EditDialog(formatField.getText());
+            ed.setVisible(true);
+            ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_editButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -243,10 +264,11 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JButton dataButton;
     private javax.swing.JTextField dataField;
     private javax.swing.JLabel dataLabel;
+    private javax.swing.JButton editButton;
     private javax.swing.JButton formatButton;
     private javax.swing.JTextField formatField;
     private javax.swing.JLabel formatLabel;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton infoButton;
     private javax.swing.JButton startButton;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
