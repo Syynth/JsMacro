@@ -35,11 +35,13 @@ public class InfoDialog extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
         jTextArea1.setText("@tab\n@enter\n@forward\n@back\n@backspace\n@home\n@end\n@up\n@down\n@left\n@right\n@capslock\n@ctrl\n@shift\n@alt\n@escape");
         jScrollPane1.setViewportView(jTextArea1);
 
+        jTextArea2.setEditable(false);
         jTextArea2.setColumns(20);
         jTextArea2.setRows(5);
         jTextArea2.setText("[start]\n[/start]\n\n[item]\n[/item]\n\n[reset]\n[/reset]\n\n[end]\n[/end]");
@@ -56,7 +58,7 @@ public class InfoDialog extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 200, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(0, 0, Short.MAX_VALUE)))
