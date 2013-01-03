@@ -63,7 +63,6 @@ public class Macro extends Thread {
             }
             macroData.advanceEntry();
             if (abort) { break; }
-            sleep(2000);
         }
         for (String cmd : macroData.getCommandList("end")) {
             if (abort) { break; }
