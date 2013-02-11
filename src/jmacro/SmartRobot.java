@@ -1,15 +1,22 @@
 package jmacro;
 
 import java.awt.AWTException;
+import java.awt.event.InputEvent;
 import java.awt.event.KeyEvent;
 import java.lang.reflect.Field;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+
 public class SmartRobot extends java.awt.Robot {
     
     public SmartRobot() throws AWTException {
         
+    }
+    
+    public void click() {
+        this.mousePress(InputEvent.BUTTON1_MASK);
+        this.mouseRelease(InputEvent.BUTTON1_MASK);
     }
 
     public void type(String text) {

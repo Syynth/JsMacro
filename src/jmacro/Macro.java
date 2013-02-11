@@ -97,6 +97,8 @@ public class Macro extends Thread {
                 macroData.getRobot().keyPress(SmartRobot.getKeyCode(param));
                 macroData.getRobot().keyRelease(SmartRobot.getKeyCode(param));
             }
+        } else if (c == '*') {
+            macroData.getRobot().click();
         } else if (c == '#') {
             sleep(Integer.parseInt(param));
         }
