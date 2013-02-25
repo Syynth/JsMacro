@@ -82,10 +82,11 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         previewPanel = new javax.swing.JPanel();
-        field0Label = new javax.swing.JLabel();
-        field0PreviewField = new javax.swing.JTextField();
+        itemNumberLabel = new javax.swing.JLabel();
+        itemPreviewField = new javax.swing.JTextField();
         leftButton = new javax.swing.JButton();
         rightButton = new javax.swing.JButton();
+        resetPreviewButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Macro Typist");
@@ -215,13 +216,11 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        previewPanel.setVisible(false);
+        itemNumberLabel.setText("Item 0:");
 
-        field0Label.setText("Item 0:");
-
-        field0PreviewField.addActionListener(new java.awt.event.ActionListener() {
+        itemPreviewField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                field0PreviewFieldActionPerformed(evt);
+                itemPreviewFieldActionPerformed(evt);
             }
         });
 
@@ -235,28 +234,35 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         rightButton.setMinimumSize(new java.awt.Dimension(50, 25));
         rightButton.setPreferredSize(new java.awt.Dimension(50, 25));
 
+        resetPreviewButton.setText("Reset");
+
         javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(previewPanel);
         previewPanel.setLayout(previewPanelLayout);
         previewPanelLayout.setHorizontalGroup(
             previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previewPanelLayout.createSequentialGroup()
+                .addComponent(resetPreviewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(field0Label)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(field0PreviewField)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(itemNumberLabel)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(itemPreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         previewPanelLayout.setVerticalGroup(
             previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previewPanelLayout.createSequentialGroup()
-                .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(field0Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(field0PreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(itemNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(itemPreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(resetPreviewButton)))
+                .addGap(2, 2, 2))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -305,7 +311,6 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             macroData.setWindow(this);
             macroData.parseData();
             gkl.setReadyToStart();
-            this.setVisible(false);
         }
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -333,9 +338,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dataButtonActionPerformed
 
-    private void field0PreviewFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field0PreviewFieldActionPerformed
+    private void itemPreviewFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPreviewFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_field0PreviewFieldActionPerformed
+    }//GEN-LAST:event_itemPreviewFieldActionPerformed
     
     /**
      * @param args the command line arguments
@@ -366,16 +371,17 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JLabel dataLabel;
     private javax.swing.JButton editDataButton;
     private javax.swing.JButton editMacroButton;
-    private javax.swing.JLabel field0Label;
-    private javax.swing.JTextField field0PreviewField;
     private javax.swing.JButton formatButton;
     private javax.swing.JTextField formatField;
     private javax.swing.JLabel formatLabel;
     private javax.swing.JButton infoButton;
+    private javax.swing.JLabel itemNumberLabel;
+    private javax.swing.JTextField itemPreviewField;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton leftButton;
     private javax.swing.JPanel previewPanel;
+    private javax.swing.JButton resetPreviewButton;
     private javax.swing.JButton rightButton;
     private javax.swing.JButton startButton;
     private javax.swing.JPanel titlePanel;

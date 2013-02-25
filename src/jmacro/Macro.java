@@ -75,7 +75,6 @@ public class Macro extends Thread {
         macroData.resetEntryPosition();
         abort = false;
         running = false;
-        macroData.getWindow().setVisible(true);
     }
     
     private void executeCommand(String cmd) {
