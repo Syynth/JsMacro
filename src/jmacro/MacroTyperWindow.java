@@ -228,13 +228,28 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         leftButton.setMaximumSize(new java.awt.Dimension(50, 25));
         leftButton.setMinimumSize(new java.awt.Dimension(50, 25));
         leftButton.setPreferredSize(new java.awt.Dimension(50, 25));
+        leftButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                leftButtonActionPerformed(evt);
+            }
+        });
 
         rightButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/rightarrow.png"))); // NOI18N
         rightButton.setMaximumSize(new java.awt.Dimension(50, 25));
         rightButton.setMinimumSize(new java.awt.Dimension(50, 25));
         rightButton.setPreferredSize(new java.awt.Dimension(50, 25));
+        rightButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rightButtonActionPerformed(evt);
+            }
+        });
 
         resetPreviewButton.setText("Reset");
+        resetPreviewButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                resetPreviewButtonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(previewPanel);
         previewPanel.setLayout(previewPanelLayout);
@@ -341,6 +356,18 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private void itemPreviewFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPreviewFieldActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_itemPreviewFieldActionPerformed
+
+    private void resetPreviewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_resetPreviewButtonActionPerformed
+        macroData.resetEntryPosition();
+    }//GEN-LAST:event_resetPreviewButtonActionPerformed
+
+    private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
+        macroData.revertEntry();
+    }//GEN-LAST:event_leftButtonActionPerformed
+
+    private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
+        macroData.advanceEntry();
+    }//GEN-LAST:event_rightButtonActionPerformed
     
     /**
      * @param args the command line arguments

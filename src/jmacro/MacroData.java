@@ -38,6 +38,9 @@ public class MacroData {
     public void advanceEntry() {
         currentEntry++;
     }
+    public void revertEntry() {
+        currentEntry--;
+    }
     public void resetEntryPosition() {
         currentEntry = 0;
     }

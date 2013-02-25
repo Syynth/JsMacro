@@ -298,6 +298,9 @@
               <Dimension value="[50, 25]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="leftButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="rightButton">
           <Properties>
@@ -314,11 +317,17 @@
               <Dimension value="[50, 25]"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rightButtonActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="resetPreviewButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Reset"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="resetPreviewButtonActionPerformed"/>
+          </Events>
         </Component>
       </SubComponents>
     </Container>
