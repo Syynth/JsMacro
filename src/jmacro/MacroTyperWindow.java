@@ -77,14 +77,21 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         formatButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
-        editMFLButton = new javax.swing.JButton();
-        editCSVButton = new javax.swing.JButton();
+        editDataButton = new javax.swing.JButton();
+        editMacroButton = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        previewPanel = new javax.swing.JPanel();
+        field0Label = new javax.swing.JLabel();
+        field0PreviewField = new javax.swing.JTextField();
+        leftButton = new javax.swing.JButton();
+        rightButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Macro Typist");
         setResizable(false);
 
-        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.3"));
+        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.4"));
 
         dataButton.setText("...");
         dataButton.addActionListener(new java.awt.event.ActionListener() {
@@ -105,6 +112,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         });
 
         startButton.setText("Start");
+        startButton.setMaximumSize(new java.awt.Dimension(58, 23));
+        startButton.setMinimumSize(new java.awt.Dimension(58, 23));
+        startButton.setPreferredSize(new java.awt.Dimension(58, 23));
         startButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 startButtonActionPerformed(evt);
@@ -118,19 +128,29 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        editMFLButton.setText("Edit MFL File");
-        editMFLButton.addActionListener(new java.awt.event.ActionListener() {
+        editDataButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/editicon.png"))); // NOI18N
+        editDataButton.setMaximumSize(new java.awt.Dimension(45, 23));
+        editDataButton.setMinimumSize(new java.awt.Dimension(45, 23));
+        editDataButton.setPreferredSize(new java.awt.Dimension(45, 23));
+        editDataButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editMFLButtonActionPerformed(evt);
+                editDataButtonActionPerformed(evt);
             }
         });
 
-        editCSVButton.setText("Edit CSV File");
-        editCSVButton.addActionListener(new java.awt.event.ActionListener() {
+        editMacroButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/editicon.png"))); // NOI18N
+        editMacroButton.setMaximumSize(new java.awt.Dimension(45, 23));
+        editMacroButton.setMinimumSize(new java.awt.Dimension(45, 23));
+        editMacroButton.setPreferredSize(new java.awt.Dimension(45, 23));
+        editMacroButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editCSVButtonActionPerformed(evt);
+                editMacroButtonActionPerformed(evt);
             }
         });
+
+        jButton1.setText("New Macro");
+
+        jButton2.setText("New Data File");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -138,32 +158,36 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(infoButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editCSVButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editMFLButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(startButton))
                     .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(dataLabel)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataField, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(dataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addContainerGap()
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(titlePanelLayout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(dataLabel)
+                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(dataField))
+                                .addComponent(jButton2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(titlePanelLayout.createSequentialGroup()
-                                .addContainerGap()
                                 .addComponent(formatLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(formatField)))
+                                .addComponent(formatField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(formatButton, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(dataButton, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap())
+                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                                .addComponent(formatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(editMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -172,19 +196,67 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(dataLabel)
                     .addComponent(dataField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(dataButton))
+                    .addComponent(dataButton)
+                    .addComponent(editDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(formatLabel)
-                    .addComponent(formatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(formatButton))
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(formatLabel)
+                        .addComponent(formatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(formatButton))
+                    .addComponent(editMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(startButton)
-                    .addComponent(infoButton)
-                    .addComponent(editMFLButton)
-                    .addComponent(editCSVButton))
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(infoButton)
+                        .addComponent(jButton2))
+                    .addComponent(jButton1))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        previewPanel.setVisible(false);
+
+        field0Label.setText("Item 0:");
+
+        field0PreviewField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                field0PreviewFieldActionPerformed(evt);
+            }
+        });
+
+        leftButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/leftarrow.png"))); // NOI18N
+        leftButton.setMaximumSize(new java.awt.Dimension(50, 25));
+        leftButton.setMinimumSize(new java.awt.Dimension(50, 25));
+        leftButton.setPreferredSize(new java.awt.Dimension(50, 25));
+
+        rightButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/rightarrow.png"))); // NOI18N
+        rightButton.setMaximumSize(new java.awt.Dimension(50, 25));
+        rightButton.setMinimumSize(new java.awt.Dimension(50, 25));
+        rightButton.setPreferredSize(new java.awt.Dimension(50, 25));
+
+        javax.swing.GroupLayout previewPanelLayout = new javax.swing.GroupLayout(previewPanel);
+        previewPanel.setLayout(previewPanelLayout);
+        previewPanelLayout.setHorizontalGroup(
+            previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previewPanelLayout.createSequentialGroup()
+                .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(field0Label)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(field0PreviewField)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+        previewPanelLayout.setVerticalGroup(
+            previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(previewPanelLayout.createSequentialGroup()
+                .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(field0Label, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(field0PreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -192,14 +264,50 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(previewPanel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titlePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(previewPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(2, 2, 2))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void editMacroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMacroButtonActionPerformed
+        if (!formatField.getText().equals("")) {
+            EditDialog ed = new EditDialog(formatField.getText());
+            ed.setVisible(true);
+            ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_editMacroButtonActionPerformed
+
+    private void editDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDataButtonActionPerformed
+        if (!dataField.getText().equals("")) {
+            EditDialog ed = new EditDialog(dataField.getText());
+            ed.setVisible(true);
+            ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_editDataButtonActionPerformed
+
+    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
+        InfoDialog id = new InfoDialog();
+        id.setVisible(true);
+        id.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+    }//GEN-LAST:event_infoButtonActionPerformed
+
+    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
+        if (!"".equals(formatField.getText()) && !"".equals(dataField.getText())) {
+            macroData.setWindow(this);
+            macroData.parseData();
+            gkl.setReadyToStart();
+            this.setVisible(false);
+        }
+    }//GEN-LAST:event_startButtonActionPerformed
 
     private void formatButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_formatButtonActionPerformed
         JFileChooser c;
@@ -213,15 +321,6 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formatButtonActionPerformed
 
-    private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
-        if (!"".equals(formatField.getText()) && !"".equals(dataField.getText())) {
-            macroData.setWindow(this);
-            macroData.parseData();
-            gkl.setReadyToStart();
-            this.setVisible(false);
-        }
-    }//GEN-LAST:event_startButtonActionPerformed
-
     private void dataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataButtonActionPerformed
         JFileChooser c;
         c = new JFileChooser();
@@ -234,27 +333,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_dataButtonActionPerformed
 
-    private void infoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_infoButtonActionPerformed
-        InfoDialog id = new InfoDialog();
-        id.setVisible(true);
-        id.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-    }//GEN-LAST:event_infoButtonActionPerformed
-
-    private void editMFLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMFLButtonActionPerformed
-        if (!formatField.getText().equals("")) {
-            EditDialog ed = new EditDialog(formatField.getText());
-            ed.setVisible(true);
-            ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }
-    }//GEN-LAST:event_editMFLButtonActionPerformed
-
-    private void editCSVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCSVButtonActionPerformed
-        if (!dataField.getText().equals("")) {
-            EditDialog ed = new EditDialog(dataField.getText());
-            ed.setVisible(true);
-            ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        }
-    }//GEN-LAST:event_editCSVButtonActionPerformed
+    private void field0PreviewFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_field0PreviewFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_field0PreviewFieldActionPerformed
     
     /**
      * @param args the command line arguments
@@ -283,12 +364,19 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JButton dataButton;
     private javax.swing.JTextField dataField;
     private javax.swing.JLabel dataLabel;
-    private javax.swing.JButton editCSVButton;
-    private javax.swing.JButton editMFLButton;
+    private javax.swing.JButton editDataButton;
+    private javax.swing.JButton editMacroButton;
+    private javax.swing.JLabel field0Label;
+    private javax.swing.JTextField field0PreviewField;
     private javax.swing.JButton formatButton;
     private javax.swing.JTextField formatField;
     private javax.swing.JLabel formatLabel;
     private javax.swing.JButton infoButton;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton leftButton;
+    private javax.swing.JPanel previewPanel;
+    private javax.swing.JButton rightButton;
     private javax.swing.JButton startButton;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables
