@@ -52,8 +52,10 @@
                       <Group type="102" alignment="1" attributes="0">
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="infoButton" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace pref="124" max="32767" attributes="0"/>
-                          <Component id="editButton" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="editCSVButton" min="-2" pref="99" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="editMFLButton" min="-2" pref="104" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="startButton" min="-2" max="-2" attributes="0"/>
                       </Group>
@@ -102,7 +104,8 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="startButton" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="infoButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="editButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editMFLButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="editCSVButton" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -156,12 +159,20 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="infoButtonActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="editButton">
+        <Component class="javax.swing.JButton" name="editMFLButton">
           <Properties>
             <Property name="text" type="java.lang.String" value="Edit MFL File"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editButtonActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editMFLButtonActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JButton" name="editCSVButton">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Edit CSV File"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="editCSVButtonActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

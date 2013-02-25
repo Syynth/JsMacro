@@ -77,7 +77,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         formatButton = new javax.swing.JButton();
         startButton = new javax.swing.JButton();
         infoButton = new javax.swing.JButton();
-        editButton = new javax.swing.JButton();
+        editMFLButton = new javax.swing.JButton();
+        editCSVButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Macro Typist");
@@ -117,10 +118,17 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        editButton.setText("Edit MFL File");
-        editButton.addActionListener(new java.awt.event.ActionListener() {
+        editMFLButton.setText("Edit MFL File");
+        editMFLButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                editButtonActionPerformed(evt);
+                editMFLButtonActionPerformed(evt);
+            }
+        });
+
+        editCSVButton.setText("Edit CSV File");
+        editCSVButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                editCSVButtonActionPerformed(evt);
             }
         });
 
@@ -133,8 +141,10 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
                         .addContainerGap()
                         .addComponent(infoButton)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 124, Short.MAX_VALUE)
-                        .addComponent(editButton)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editCSVButton, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(editMFLButton, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(startButton))
                     .addGroup(titlePanelLayout.createSequentialGroup()
@@ -172,7 +182,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(startButton)
                     .addComponent(infoButton)
-                    .addComponent(editButton))
+                    .addComponent(editMFLButton)
+                    .addComponent(editCSVButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -229,13 +240,21 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         id.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }//GEN-LAST:event_infoButtonActionPerformed
 
-    private void editButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editButtonActionPerformed
+    private void editMFLButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editMFLButtonActionPerformed
         if (!formatField.getText().equals("")) {
             EditDialog ed = new EditDialog(formatField.getText());
             ed.setVisible(true);
             ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
-    }//GEN-LAST:event_editButtonActionPerformed
+    }//GEN-LAST:event_editMFLButtonActionPerformed
+
+    private void editCSVButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editCSVButtonActionPerformed
+        if (!dataField.getText().equals("")) {
+            EditDialog ed = new EditDialog(dataField.getText());
+            ed.setVisible(true);
+            ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        }
+    }//GEN-LAST:event_editCSVButtonActionPerformed
     
     /**
      * @param args the command line arguments
@@ -264,7 +283,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JButton dataButton;
     private javax.swing.JTextField dataField;
     private javax.swing.JLabel dataLabel;
-    private javax.swing.JButton editButton;
+    private javax.swing.JButton editCSVButton;
+    private javax.swing.JButton editMFLButton;
     private javax.swing.JButton formatButton;
     private javax.swing.JTextField formatField;
     private javax.swing.JLabel formatLabel;
