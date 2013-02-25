@@ -56,8 +56,8 @@ public class MacroData {
         if (data == null) { return; }
         if (macroInstructions == null) { return; }
         try {
-            if (data.getName().toLowerCase().endsWith("prn")) {
-                parsePRN(data);
+            if (data.getName().toLowerCase().endsWith("csv")) {
+                parseCSV(data);
             }
             if (macroInstructions.getName().toLowerCase().endsWith("mfl")) {
                 parseMFL(macroInstructions);
@@ -66,10 +66,10 @@ public class MacroData {
             Logger.getLogger(MacroData.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    private void parsePRN(File prn) throws FileNotFoundException {
+    private void parseCSV(File csv) throws FileNotFoundException {
         items = new ArrayList<>();
         Scanner scan;
-        scan = new Scanner(prn);
+        scan = new Scanner(csv);
         while (scan.hasNextLine()) {
             items.add(new MacroDataItem(scan.nextLine()));
         }
@@ -140,9 +140,9 @@ public class MacroData {
         private final int fieldWidth = 32;
         
         public MacroDataItem(String data) {
-            fields = new String[(int)Math.ceil(data.length() * 1.0 / 32.0)];
-            for (int i = 0; i < fields.length; i++) {
-                fields[i] = data.substring(i * fieldWidth, Math.min((i + 1) * fieldWidth, data.length())).trim();
+            fields = data.split(",");
+            for (String s : fields) {
+                s = s.trim();
             }
         }
         

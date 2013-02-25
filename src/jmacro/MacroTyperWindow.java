@@ -92,7 +92,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        dataLabel.setText("Data (.PRN):");
+        dataLabel.setText("Data (.CSV):");
 
         formatLabel.setText("Macro Format:");
 
@@ -215,7 +215,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         JFileChooser c;
         c = new JFileChooser();
         c.setFileSelectionMode(JFileChooser.FILES_ONLY);
-        c.setFileFilter(new FileNameExtensionFilter("PRN Files", "prn"));
+        c.setFileFilter(new FileNameExtensionFilter("CSV Files", "csv"));
         c.showDialog(this, null);
         if (c.getSelectedFile() != null) {
             dataField.setText(c.getSelectedFile().getAbsolutePath());
