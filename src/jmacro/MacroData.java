@@ -81,6 +81,7 @@ public class MacroData {
             if (macroInstructions.getName().toLowerCase().endsWith("mfl")) {
                 parseMFL(macroInstructions);
             }
+            resetEntryPosition();
             return true;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MacroData.class.getName()).log(Level.SEVERE, null, ex);
