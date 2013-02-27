@@ -17,8 +17,10 @@ public class MacroData {
     private ArrayList<MacroDataItem> items;
     private SmartRobot bot;
     private JFrame window;
+    private MacroTyperWindow macroWindow;
     
-    public MacroData() {
+    public MacroData(MacroTyperWindow window) {
+        macroWindow = window;
         items = new ArrayList<>();
         currentEntry = 0;
         
@@ -37,12 +39,26 @@ public class MacroData {
     
     public void advanceEntry() {
         currentEntry++;
+        enforceEntryPosition();
     }
     public void revertEntry() {
         currentEntry--;
+        enforceEntryPosition();
     }
     public void resetEntryPosition() {
         currentEntry = 0;
+        enforceEntryPosition();
+    }
+    private void enforceEntryPosition() {
+        if (currentEntry < 0) {
+            currentEntry = 0;
+        }
+        if (currentEntry > getNumberOfEntries() - 1) {
+            currentEntry = getNumberOfEntries() - 1;
+        }
+        if (getNumberOfEntries() > 0) {
+            macroWindow.setPreviewWindow(currentEntry, getCurrentEntry());
+        }
     }
     
     public void setData(File data) {
@@ -55,9 +71,9 @@ public class MacroData {
         this.window = window;
     }
     
-    public void parseData() {
-        if (data == null) { return; }
-        if (macroInstructions == null) { return; }
+    public boolean parseData() {
+        if (data == null) { return false; }
+        if (macroInstructions == null) { return false; }
         try {
             if (data.getName().toLowerCase().endsWith("csv")) {
                 parseCSV(data);
@@ -65,8 +81,10 @@ public class MacroData {
             if (macroInstructions.getName().toLowerCase().endsWith("mfl")) {
                 parseMFL(macroInstructions);
             }
+            return true;
         } catch (FileNotFoundException ex) {
             Logger.getLogger(MacroData.class.getName()).log(Level.SEVERE, null, ex);
+            return false;
         }
     }
     private void parseCSV(File csv) throws FileNotFoundException {

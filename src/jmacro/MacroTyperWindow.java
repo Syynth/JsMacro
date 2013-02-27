@@ -20,7 +20,7 @@ import org.jnativehook.NativeHookException;
 public class MacroTyperWindow extends javax.swing.JFrame {
 
     public MacroTyperWindow() {
-        macroData = new MacroData();
+        macroData = new MacroData(this);
         
         super.setLocationRelativeTo(null);
         super.setLocation(super.getLocation().x - super.getWidth() / 2,
@@ -79,13 +79,13 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         infoButton = new javax.swing.JButton();
         editDataButton = new javax.swing.JButton();
         editMacroButton = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        newMacroButton = new javax.swing.JButton();
+        newDataFile = new javax.swing.JButton();
         previewPanel = new javax.swing.JPanel();
         itemNumberLabel = new javax.swing.JLabel();
         itemPreviewField = new javax.swing.JTextField();
-        leftButton = new javax.swing.JButton();
-        rightButton = new javax.swing.JButton();
+        previewButton = new javax.swing.JButton();
+        nextButton = new javax.swing.JButton();
         resetPreviewButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -149,9 +149,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("New Macro");
+        newMacroButton.setText("New Macro");
 
-        jButton2.setText("New Data File");
+        newDataFile.setText("New Data File");
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -172,9 +172,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                         .addContainerGap()
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(titlePanelLayout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(newMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
+                                .addComponent(newDataFile)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(titlePanelLayout.createSequentialGroup()
@@ -211,8 +211,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                     .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(infoButton)
-                        .addComponent(jButton2))
-                    .addComponent(jButton1))
+                        .addComponent(newDataFile))
+                    .addComponent(newMacroButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -224,27 +224,30 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        leftButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/leftarrow.png"))); // NOI18N
-        leftButton.setMaximumSize(new java.awt.Dimension(50, 25));
-        leftButton.setMinimumSize(new java.awt.Dimension(50, 25));
-        leftButton.setPreferredSize(new java.awt.Dimension(50, 25));
-        leftButton.addActionListener(new java.awt.event.ActionListener() {
+        previewButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/leftarrow.png"))); // NOI18N
+        previewButton.setMaximumSize(new java.awt.Dimension(50, 25));
+        previewButton.setMinimumSize(new java.awt.Dimension(50, 25));
+        previewButton.setPreferredSize(new java.awt.Dimension(50, 25));
+        previewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                leftButtonActionPerformed(evt);
+                previewButtonActionPerformed(evt);
             }
         });
 
-        rightButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/rightarrow.png"))); // NOI18N
-        rightButton.setMaximumSize(new java.awt.Dimension(50, 25));
-        rightButton.setMinimumSize(new java.awt.Dimension(50, 25));
-        rightButton.setPreferredSize(new java.awt.Dimension(50, 25));
-        rightButton.addActionListener(new java.awt.event.ActionListener() {
+        nextButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/rightarrow.png"))); // NOI18N
+        nextButton.setMaximumSize(new java.awt.Dimension(50, 25));
+        nextButton.setMinimumSize(new java.awt.Dimension(50, 25));
+        nextButton.setPreferredSize(new java.awt.Dimension(50, 25));
+        nextButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rightButtonActionPerformed(evt);
+                nextButtonActionPerformed(evt);
             }
         });
 
         resetPreviewButton.setText("Reset");
+        resetPreviewButton.setMaximumSize(new java.awt.Dimension(61, 25));
+        resetPreviewButton.setMinimumSize(new java.awt.Dimension(61, 25));
+        resetPreviewButton.setPreferredSize(new java.awt.Dimension(61, 25));
         resetPreviewButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 resetPreviewButtonActionPerformed(evt);
@@ -256,15 +259,16 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         previewPanelLayout.setHorizontalGroup(
             previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(previewPanelLayout.createSequentialGroup()
-                .addComponent(resetPreviewButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(resetPreviewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(previewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(itemNumberLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemPreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, 244, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(itemPreviewField)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         previewPanelLayout.setVerticalGroup(
             previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -273,10 +277,10 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                     .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(itemNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(itemPreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(rightButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(previewPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(leftButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(resetPreviewButton)))
+                        .addComponent(previewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(resetPreviewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(2, 2, 2))
         );
 
@@ -339,6 +343,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             formatField.setText(c.getSelectedFile().getAbsolutePath());
             macroData.setMacroInstructions(c.getSelectedFile());
         }
+        initPreviewPanel();
     }//GEN-LAST:event_formatButtonActionPerformed
 
     private void dataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_dataButtonActionPerformed
@@ -351,6 +356,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             dataField.setText(c.getSelectedFile().getAbsolutePath());
             macroData.setData(c.getSelectedFile());
         }
+        initPreviewPanel();
     }//GEN-LAST:event_dataButtonActionPerformed
 
     private void itemPreviewFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_itemPreviewFieldActionPerformed
@@ -361,13 +367,25 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         macroData.resetEntryPosition();
     }//GEN-LAST:event_resetPreviewButtonActionPerformed
 
-    private void leftButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_leftButtonActionPerformed
+    private void previewButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_previewButtonActionPerformed
         macroData.revertEntry();
-    }//GEN-LAST:event_leftButtonActionPerformed
+    }//GEN-LAST:event_previewButtonActionPerformed
 
-    private void rightButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rightButtonActionPerformed
+    private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         macroData.advanceEntry();
-    }//GEN-LAST:event_rightButtonActionPerformed
+    }//GEN-LAST:event_nextButtonActionPerformed
+    
+    public void setPreviewWindow(int number, String preview) {
+        itemNumberLabel.setText("Item [" + (number + 1) + "/" + macroData.getNumberOfEntries() + "]:");
+        itemPreviewField.setText(preview);
+    }
+    
+    public void initPreviewPanel() {
+        if (macroData.parseData()) {
+            previewPanel.setVisible(true);
+            setPreviewWindow(0, macroData.getCurrentEntry());
+        }
+    }
     
     /**
      * @param args the command line arguments
@@ -404,12 +422,12 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JButton infoButton;
     private javax.swing.JLabel itemNumberLabel;
     private javax.swing.JTextField itemPreviewField;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton leftButton;
+    private javax.swing.JButton newDataFile;
+    private javax.swing.JButton newMacroButton;
+    private javax.swing.JButton nextButton;
+    private javax.swing.JButton previewButton;
     private javax.swing.JPanel previewPanel;
     private javax.swing.JButton resetPreviewButton;
-    private javax.swing.JButton rightButton;
     private javax.swing.JButton startButton;
     private javax.swing.JPanel titlePanel;
     // End of variables declaration//GEN-END:variables

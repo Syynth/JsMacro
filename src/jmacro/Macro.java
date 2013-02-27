@@ -72,7 +72,7 @@ public class Macro extends Thread {
             JOptionPane.showMessageDialog(null, "Last active record was " +
                     macroData.getCurrentEntry());
         }
-        macroData.resetEntryPosition();
+        //macroData.resetEntryPosition();
         abort = false;
         running = false;
     }
