@@ -90,10 +90,12 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         nextButton = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Macro Typist");
+        setTitle("JMacro");
+        setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        setIconImages(null);
         setResizable(false);
 
-        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Macro Typist v0.4"));
+        titlePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("JMacro v0.4"));
 
         dataButton.setText("...");
         dataButton.addActionListener(new java.awt.event.ActionListener() {
