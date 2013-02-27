@@ -4,6 +4,8 @@
  */
 package jmacro;
 
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
@@ -14,20 +16,29 @@ import java.util.logging.Logger;
  *
  * @author bcochrane
  */
-public class EditDialog extends javax.swing.JFrame {
+public class EditDialog extends javax.swing.JFrame implements WindowListener {
 
     /**
      * Creates new form EditDialog
      */
     public EditDialog() {
-        pathname = "";
-        initComponents();
+        this("", false);
     }
     
     public EditDialog(String path) {
+        this(path, false);
+    }
+    
+    public EditDialog(String path, boolean reparse) {
         pathname = path;
+        parseOnClose = reparse;
         initComponents();
         initTextArea();
+        addWindowListener(this);
+    }
+    
+    public void linkMacroData(MacroData md) {
+        macroData = md;
     }
     
     private void initTextArea() {
@@ -134,6 +145,8 @@ public class EditDialog extends javax.swing.JFrame {
     
     private java.io.File MFLfile;
     private String pathname;
+    private boolean parseOnClose;
+    private MacroData macroData;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel editPanel;
@@ -142,4 +155,41 @@ public class EditDialog extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JButton saveButton;
     // End of variables declaration//GEN-END:variables
+
+    @Override
+    public void windowOpened(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowClosing(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowClosed(WindowEvent e) {
+        if (parseOnClose) {
+            macroData.parseData();
+        }
+    }
+
+    @Override
+    public void windowIconified(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowDeiconified(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowActivated(WindowEvent e) {
+        
+    }
+
+    @Override
+    public void windowDeactivated(WindowEvent e) {
+        
+    }
 }

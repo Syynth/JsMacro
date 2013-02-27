@@ -315,7 +315,8 @@ public class MacroTyperWindow extends javax.swing.JFrame {
 
     private void editDataButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_editDataButtonActionPerformed
         if (!dataField.getText().equals("")) {
-            EditDialog ed = new EditDialog(dataField.getText());
+            EditDialog ed = new EditDialog(dataField.getText(), true);
+            ed.linkMacroData(macroData);
             ed.setVisible(true);
             ed.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         }
@@ -330,7 +331,6 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private void startButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startButtonActionPerformed
         if (!"".equals(formatField.getText()) && !"".equals(dataField.getText())) {
             macroData.setWindow(this);
-            macroData.parseData();
             gkl.setReadyToStart();
             setWindowColor(new Color(200, 0, 0));
         }
