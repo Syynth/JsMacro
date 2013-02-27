@@ -24,6 +24,10 @@ public class Macro extends Thread {
         paused = true;
     }
     
+    public boolean isPaused() {
+        return paused;
+    }
+    
     public void proceed() {
         paused = false;
     }

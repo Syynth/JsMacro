@@ -79,7 +79,7 @@
               <Properties>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="F5 - Start&#xa;F6 - Stop&#xa;F7 - Pause&#xa;F8 - Resume"/>
+                <Property name="text" type="java.lang.String" value="F5 - Start/Stop&#xa;F6 - Pause/Resume"/>
               </Properties>
             </Component>
           </SubComponents>

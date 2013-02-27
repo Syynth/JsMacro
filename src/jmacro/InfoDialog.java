@@ -46,7 +46,7 @@ public class InfoDialog extends javax.swing.JFrame {
 
         jTextArea3.setColumns(20);
         jTextArea3.setRows(5);
-        jTextArea3.setText("F5 - Start\nF6 - Stop\nF7 - Pause\nF8 - Resume");
+        jTextArea3.setText("F5 - Start/Stop\nF6 - Pause/Resume");
         jScrollPane3.setViewportView(jTextArea3);
 
         jTabbedPane1.addTab("Keyboard Shortcuts", jScrollPane3);

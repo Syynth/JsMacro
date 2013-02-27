@@ -69,6 +69,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        modeGroup = new javax.swing.ButtonGroup();
         titlePanel = new javax.swing.JPanel();
         dataField = new javax.swing.JTextField();
         dataButton = new javax.swing.JButton();
@@ -82,6 +83,10 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         editMacroButton = new javax.swing.JButton();
         newMacroButton = new javax.swing.JButton();
         newDataFile = new javax.swing.JButton();
+        modePanel = new javax.swing.JPanel();
+        playModeButton = new javax.swing.JRadioButton();
+        insertModeButton = new javax.swing.JRadioButton();
+        recordModeButton = new javax.swing.JRadioButton();
         previewPanel = new javax.swing.JPanel();
         itemNumberLabel = new javax.swing.JLabel();
         itemPreviewField = new javax.swing.JTextField();
@@ -152,9 +157,73 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             }
         });
 
-        newMacroButton.setText("New Macro");
+        newMacroButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/add-icon-614x460.png"))); // NOI18N
+        newMacroButton.setMaximumSize(new java.awt.Dimension(26, 23));
+        newMacroButton.setMinimumSize(new java.awt.Dimension(26, 23));
+        newMacroButton.setPreferredSize(new java.awt.Dimension(26, 23));
+        newMacroButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newMacroButtonActionPerformed(evt);
+            }
+        });
 
-        newDataFile.setText("New Data File");
+        newDataFile.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/add-icon-614x460.png"))); // NOI18N
+        newDataFile.setMaximumSize(new java.awt.Dimension(26, 23));
+        newDataFile.setMinimumSize(new java.awt.Dimension(26, 23));
+        newDataFile.setPreferredSize(new java.awt.Dimension(26, 23));
+        newDataFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newDataFileActionPerformed(evt);
+            }
+        });
+
+        modePanel.setBorder(javax.swing.BorderFactory.createTitledBorder("Mode"));
+
+        modeGroup.add(playModeButton);
+        playModeButton.setSelected(true);
+        playModeButton.setText("Play");
+        playModeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                playModeButtonActionPerformed(evt);
+            }
+        });
+
+        modeGroup.add(insertModeButton);
+        insertModeButton.setText("Insert");
+        insertModeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                insertModeButtonActionPerformed(evt);
+            }
+        });
+
+        modeGroup.add(recordModeButton);
+        recordModeButton.setText("Record");
+        recordModeButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                recordModeButtonActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout modePanelLayout = new javax.swing.GroupLayout(modePanel);
+        modePanel.setLayout(modePanelLayout);
+        modePanelLayout.setHorizontalGroup(
+            modePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modePanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(playModeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(insertModeButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(recordModeButton)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        modePanelLayout.setVerticalGroup(
+            modePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(modePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addComponent(playModeButton)
+                .addComponent(recordModeButton)
+                .addComponent(insertModeButton))
+        );
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -162,62 +231,70 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(titlePanelLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(dataLabel)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dataField, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(dataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(editDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(titlePanelLayout.createSequentialGroup()
-                        .addContainerGap()
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(titlePanelLayout.createSequentialGroup()
-                                .addComponent(newMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(newDataFile)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(titlePanelLayout.createSequentialGroup()
+                                .addContainerGap()
                                 .addComponent(formatLabel)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(formatField, javax.swing.GroupLayout.PREFERRED_SIZE, 194, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(formatField))
+                            .addGroup(titlePanelLayout.createSequentialGroup()
+                                .addGap(18, 18, 18)
+                                .addComponent(dataLabel)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(dataField)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
                                 .addComponent(formatButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(editMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addComponent(editMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(newMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
+                                .addComponent(dataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(editDataButton, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(newDataFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(modePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(infoButton, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         titlePanelLayout.setVerticalGroup(
             titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(titlePanelLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(editDataButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(dataLabel)
-                        .addComponent(dataField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(dataButton)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(editDataButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(dataLabel)
+                            .addComponent(dataField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(dataButton)))
+                    .addComponent(newDataFile, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(formatLabel)
                         .addComponent(formatField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(formatButton))
-                    .addComponent(editMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(editMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(newMacroButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(infoButton)
-                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(newDataFile))
-                    .addComponent(newMacroButton))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(infoButton)
+                            .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(titlePanelLayout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(modePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
         );
 
         previewPanel.setBorder(javax.swing.BorderFactory.createEtchedBorder());
@@ -265,11 +342,11 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(resetPreviewButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(previewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(previewButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(itemNumberLabel)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(itemPreviewField)
+                .addComponent(itemPreviewField, javax.swing.GroupLayout.DEFAULT_SIZE, 155, Short.MAX_VALUE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(6, 6, 6))
@@ -298,8 +375,9 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(titlePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(previewPanel, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
 
         pack();
@@ -377,6 +455,26 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private void nextButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nextButtonActionPerformed
         macroData.advanceEntry();
     }//GEN-LAST:event_nextButtonActionPerformed
+
+    private void playModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playModeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_playModeButtonActionPerformed
+
+    private void newDataFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataFileActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newDataFileActionPerformed
+
+    private void newMacroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMacroButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_newMacroButtonActionPerformed
+
+    private void insertModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertModeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_insertModeButtonActionPerformed
+
+    private void recordModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordModeButtonActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_recordModeButtonActionPerformed
     
     public void setWindowColor(Color c) {
         titlePanel.setBackground(c);
@@ -432,13 +530,18 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     private javax.swing.JTextField formatField;
     private javax.swing.JLabel formatLabel;
     private javax.swing.JButton infoButton;
+    private javax.swing.JRadioButton insertModeButton;
     private javax.swing.JLabel itemNumberLabel;
     private javax.swing.JTextField itemPreviewField;
+    private javax.swing.ButtonGroup modeGroup;
+    private javax.swing.JPanel modePanel;
     private javax.swing.JButton newDataFile;
     private javax.swing.JButton newMacroButton;
     private javax.swing.JButton nextButton;
+    private javax.swing.JRadioButton playModeButton;
     private javax.swing.JButton previewButton;
     private javax.swing.JPanel previewPanel;
+    private javax.swing.JRadioButton recordModeButton;
     private javax.swing.JButton resetPreviewButton;
     private javax.swing.JButton startButton;
     private javax.swing.JPanel titlePanel;

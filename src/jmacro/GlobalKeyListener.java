@@ -25,30 +25,33 @@ public class GlobalKeyListener implements NativeKeyListener {
     
         @Override
         public void nativeKeyPressed(NativeKeyEvent e) {
+
+            if (e.getKeyCode() == NativeKeyEvent.VK_F5) {
+                if (canStart) {
+                    activeMacro = new Macro(macroData);
+                    activeMacro.start();
+                    canStart = false;
+                    macroWindow.setWindowColor(Color.green);
+                } else {
+                    if (macroData != null && activeMacro != null) {
+                        activeMacro.abort();
+                        canStart = false;
+                        macroWindow.resetWindowColor();
+                        activeMacro = null;
+                    }
+                }
+            }
+            
             if (e.getKeyCode() == NativeKeyEvent.VK_F6) {
                 if (macroData != null && activeMacro != null) {
-                    activeMacro.abort();
-                    canStart = false;
-                    macroWindow.resetWindowColor();
-                }
-            }
-            if (e.getKeyCode() == NativeKeyEvent.VK_F7) {
-                if (macroData != null && activeMacro != null) {
-                    activeMacro.pause();
-                    macroWindow.setWindowColor(Color.yellow);
-                }
-            }
-            if (e.getKeyCode() == NativeKeyEvent.VK_F8) { 
-                if (macroData != null && activeMacro != null) {
-                    activeMacro.proceed();
+                    if (activeMacro.isPaused()) {
+                        activeMacro.proceed();
                     macroWindow.setWindowColor(Color.green);
+                    } else {
+                        activeMacro.pause();
+                        macroWindow.setWindowColor(Color.yellow);
+                    }
                 }
-            }
-            if (e.getKeyCode() == NativeKeyEvent.VK_F5 && canStart) {
-                activeMacro = new Macro(macroData);
-                activeMacro.start();
-                canStart = false;
-                macroWindow.setWindowColor(Color.green);
             }
         }
         @Override
