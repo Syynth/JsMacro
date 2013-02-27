@@ -1,10 +1,16 @@
 package jmacro;
 
+import java.awt.Color;
 import org.jnativehook.keyboard.NativeKeyEvent;
 import org.jnativehook.keyboard.NativeKeyListener;
 
 public class GlobalKeyListener implements NativeKeyListener {
     
+        public GlobalKeyListener(MacroTyperWindow window) {
+            macroWindow = window;
+        }
+        
+        private MacroTyperWindow macroWindow;
         private MacroData macroData;
         private Macro activeMacro;
         private boolean canStart;
@@ -23,22 +29,26 @@ public class GlobalKeyListener implements NativeKeyListener {
                 if (macroData != null && activeMacro != null) {
                     activeMacro.abort();
                     canStart = false;
+                    macroWindow.resetWindowColor();
                 }
             }
             if (e.getKeyCode() == NativeKeyEvent.VK_F7) {
                 if (macroData != null && activeMacro != null) {
                     activeMacro.pause();
+                    macroWindow.setWindowColor(Color.yellow);
                 }
             }
             if (e.getKeyCode() == NativeKeyEvent.VK_F8) { 
                 if (macroData != null && activeMacro != null) {
                     activeMacro.proceed();
+                    macroWindow.setWindowColor(Color.green);
                 }
             }
             if (e.getKeyCode() == NativeKeyEvent.VK_F5 && canStart) {
                 activeMacro = new Macro(macroData);
                 activeMacro.start();
                 canStart = false;
+                macroWindow.setWindowColor(Color.green);
             }
         }
         @Override

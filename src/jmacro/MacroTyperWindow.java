@@ -4,11 +4,11 @@
  */
 package jmacro;
 
+import java.awt.Color;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
-import javax.swing.WindowConstants;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
@@ -33,7 +33,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             System.err.println(ex.getMessage());
             System.exit(1);
         }
-        gkl = new GlobalKeyListener();
+        gkl = new GlobalKeyListener(this);
         gkl.linkData(macroData);
         GlobalScreen.getInstance().addNativeKeyListener(gkl);
         
@@ -57,6 +57,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         });
         
         initComponents();
+        bgColor = titlePanel.getBackground();
     }
 
     /**
@@ -329,6 +330,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
             macroData.setWindow(this);
             macroData.parseData();
             gkl.setReadyToStart();
+            setWindowColor(new Color(200, 0, 0));
         }
     }//GEN-LAST:event_startButtonActionPerformed
 
@@ -374,6 +376,14 @@ public class MacroTyperWindow extends javax.swing.JFrame {
         macroData.advanceEntry();
     }//GEN-LAST:event_nextButtonActionPerformed
     
+    public void setWindowColor(Color c) {
+        titlePanel.setBackground(c);
+    }
+    
+    public void resetWindowColor() {
+        titlePanel.setBackground(bgColor);
+    }
+    
     public void setPreviewWindow(int number, String preview) {
         itemNumberLabel.setText("Item [" + (number + 1) + "/" + macroData.getNumberOfEntries() + "]:");
         itemPreviewField.setText(preview);
@@ -408,6 +418,7 @@ public class MacroTyperWindow extends javax.swing.JFrame {
     
     private MacroData macroData;
     private GlobalKeyListener gkl;
+    private Color bgColor;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dataButton;
