@@ -17,9 +17,9 @@ import org.jnativehook.NativeHookException;
  *
  * @author jfelix
  */
-public class MacroTyperWindow extends javax.swing.JFrame {
+public class JMacroWindow extends javax.swing.JFrame {
 
-    public MacroTyperWindow() {
+    public JMacroWindow() {
         macroData = new MacroData(this);
         
         super.setLocationRelativeTo(null);
@@ -505,13 +505,13 @@ public class MacroTyperWindow extends javax.swing.JFrame {
                 javax.swing.UIManager.getSystemLookAndFeelClassName());
         } catch (ClassNotFoundException | InstantiationException |IllegalAccessException |
                 javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MacroTyperWindow.class.getName()).log(
+            java.util.logging.Logger.getLogger(JMacroWindow.class.getName()).log(
                     java.util.logging.Level.SEVERE, null, ex);
         }
         java.awt.EventQueue.invokeLater(new Runnable() {
             @Override
             public void run() {
-                new MacroTyperWindow().setVisible(true);
+                new JMacroWindow().setVisible(true);
             }
         });
     }

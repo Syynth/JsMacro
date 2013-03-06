@@ -6,11 +6,11 @@ import org.jnativehook.keyboard.NativeKeyListener;
 
 public class GlobalKeyListener implements NativeKeyListener {
     
-        public GlobalKeyListener(MacroTyperWindow window) {
+        public GlobalKeyListener(JMacroWindow window) {
             macroWindow = window;
         }
         
-        private MacroTyperWindow macroWindow;
+        private JMacroWindow macroWindow;
         private MacroData macroData;
         private Macro activeMacro;
         private boolean canStart;

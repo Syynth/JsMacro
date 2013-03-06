@@ -17,9 +17,9 @@ public class MacroData {
     private ArrayList<MacroDataItem> items;
     private SmartRobot bot;
     private JFrame window;
-    private MacroTyperWindow macroWindow;
+    private JMacroWindow macroWindow;
     
-    public MacroData(MacroTyperWindow window) {
+    public MacroData(JMacroWindow window) {
         macroWindow = window;
         items = new ArrayList<>();
         currentEntry = 0;
