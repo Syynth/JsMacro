@@ -87,7 +87,6 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
 
         editTextArea.setColumns(20);
         editTextArea.setRows(5);
-        editTextArea.setText("Something has gone terribly wrong!\nYour file could not be loaded.\nSorry.");
         jScrollPane1.setViewportView(editTextArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);

@@ -97,7 +97,6 @@
                   <Properties>
                     <Property name="columns" type="int" value="20"/>
                     <Property name="rows" type="int" value="5"/>
-                    <Property name="text" type="java.lang.String" value="Something has gone terribly wrong!&#xa;Your file could not be loaded.&#xa;Sorry."/>
                   </Properties>
                 </Component>
               </SubComponents>

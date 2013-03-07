@@ -461,11 +461,31 @@ public class JMacroWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_playModeButtonActionPerformed
 
     private void newDataFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataFileActionPerformed
-        // TODO add your handling code here:
+        JFileChooser c;
+        c = new JFileChooser();
+        c.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        c.setFileFilter(new FileNameExtensionFilter("CSV Files", "csv"));
+        c.setDialogType(JFileChooser.SAVE_DIALOG);
+        c.showDialog(this, null);
+        if (c.getSelectedFile() != null) {
+            dataField.setText(c.getSelectedFile().getAbsolutePath());
+            macroData.setData(c.getSelectedFile());
+        }
+        initPreviewPanel();
     }//GEN-LAST:event_newDataFileActionPerformed
 
     private void newMacroButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newMacroButtonActionPerformed
-        // TODO add your handling code here:
+        JFileChooser c;
+        c = new JFileChooser();
+        c.setFileSelectionMode(JFileChooser.FILES_ONLY);
+        c.setFileFilter(new FileNameExtensionFilter("MFL Files", "mfl"));
+        c.setDialogType(JFileChooser.SAVE_DIALOG);
+        c.showDialog(this, null);
+        if (c.getSelectedFile() != null) {
+            formatField.setText(c.getSelectedFile().getAbsolutePath());
+            macroData.setMacroInstructions(c.getSelectedFile());
+        }
+        initPreviewPanel();
     }//GEN-LAST:event_newMacroButtonActionPerformed
 
     private void insertModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertModeButtonActionPerformed
