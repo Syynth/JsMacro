@@ -4,6 +4,7 @@
  */
 package jmacro;
 
+import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.FileNotFoundException;
@@ -11,6 +12,7 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -35,6 +37,8 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
         initComponents();
         initTextArea();
         addWindowListener(this);
+        hasChanged = false;
+        this.setTitle(pathname);
     }
     
     public void linkMacroData(MacroData md) {
@@ -87,6 +91,19 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
 
         editTextArea.setColumns(20);
         editTextArea.setRows(5);
+        editTextArea.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
+            public void propertyChange(java.beans.PropertyChangeEvent evt) {
+                editTextAreaPropertyChange(evt);
+            }
+        });
+        editTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                editTextAreaKeyPressed(evt);
+            }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editTextAreaKeyTyped(evt);
+            }
+        });
         jScrollPane1.setViewportView(editTextArea);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -132,20 +149,46 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
     }// </editor-fold>//GEN-END:initComponents
 
     private void saveButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_saveButtonActionPerformed
+        saveFile();
+    }//GEN-LAST:event_saveButtonActionPerformed
+
+    private void editTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editTextAreaKeyTyped
+        
+    }//GEN-LAST:event_editTextAreaKeyTyped
+
+    private void editTextAreaPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_editTextAreaPropertyChange
+        
+    }//GEN-LAST:event_editTextAreaPropertyChange
+
+    private void editTextAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editTextAreaKeyPressed
+        hasChanged = true;
+        this.setTitle("*" + pathname);
+        if (evt.isControlDown()) {
+            if (evt.getKeyCode() == KeyEvent.VK_S) {
+                saveFile();
+            }
+        }
+    }//GEN-LAST:event_editTextAreaKeyPressed
+    
+    private boolean saveFile() {
         try {
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(pathname))) {
-                writer.write(editTextArea.getText() + "\n");
-                System.out.println(editTextArea.getText());
+                writer.write(editTextArea.getText());
             }
+            this.setTitle(pathname);
+            hasChanged = false;
+            return true;
         } catch (Exception e) {
-
+            return false;
         }
-    }//GEN-LAST:event_saveButtonActionPerformed
+    }
     
     private java.io.File MFLfile;
     private String pathname;
     private boolean parseOnClose;
     private MacroData macroData;
+    
+    private boolean hasChanged;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel editPanel;
@@ -162,7 +205,12 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
 
     @Override
     public void windowClosing(WindowEvent e) {
-        
+        if (hasChanged) {
+            if (JOptionPane.showConfirmDialog(this, "You have not yet saved!\nWould you like to now?",
+                    "Warning!", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                saveFile();
+            }
+        }
     }
 
     @Override
