@@ -20,6 +20,7 @@ import org.jnativehook.NativeHookException;
 public class JMacroWindow extends javax.swing.JFrame {
 
     public JMacroWindow() {
+        mode = Mode.PLAY;
         macroData = new MacroData(this);
         
         super.setLocationRelativeTo(null);
@@ -198,6 +199,8 @@ public class JMacroWindow extends javax.swing.JFrame {
 
         modeGroup.add(recordModeButton);
         recordModeButton.setText("Record");
+        recordModeButton.setEnabled(false);
+        recordModeButton.setFocusable(false);
         recordModeButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 recordModeButtonActionPerformed(evt);
@@ -457,7 +460,7 @@ public class JMacroWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_nextButtonActionPerformed
 
     private void playModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_playModeButtonActionPerformed
-        // TODO add your handling code here:
+        mode = Mode.PLAY;
     }//GEN-LAST:event_playModeButtonActionPerformed
 
     private void newDataFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newDataFileActionPerformed
@@ -489,11 +492,11 @@ public class JMacroWindow extends javax.swing.JFrame {
     }//GEN-LAST:event_newMacroButtonActionPerformed
 
     private void insertModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_insertModeButtonActionPerformed
-        // TODO add your handling code here:
+        mode = Mode.INSERT;
     }//GEN-LAST:event_insertModeButtonActionPerformed
 
     private void recordModeButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_recordModeButtonActionPerformed
-        // TODO add your handling code here:
+        mode = Mode.RECORD;
     }//GEN-LAST:event_recordModeButtonActionPerformed
     
     public void setWindowColor(Color c) {
@@ -536,9 +539,16 @@ public class JMacroWindow extends javax.swing.JFrame {
         });
     }
     
+    private enum Mode {
+        PLAY,
+        INSERT,
+        RECORD
+    }
+    
     private MacroData macroData;
     private GlobalKeyListener gkl;
     private Color bgColor;
+    private Mode mode;
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton dataButton;

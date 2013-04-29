@@ -1,6 +1,6 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
+/**
+ *
+ * @author Ben Cochrane
  */
 package jmacro;
 
@@ -14,10 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author bcochrane
- */
 public class EditDialog extends javax.swing.JFrame implements WindowListener {
 
     /**
@@ -183,26 +179,6 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
         }
     }
     
-    private java.io.File MFLfile;
-    private String pathname;
-    private boolean parseOnClose;
-    private MacroData macroData;
-    
-    private boolean hasChanged;
-    
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel editPanel;
-    private javax.swing.JTextArea editTextArea;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JButton saveButton;
-    // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void windowOpened(WindowEvent e) {
-        
-    }
-
     @Override
     public void windowClosing(WindowEvent e) {
         if (hasChanged) {
@@ -219,24 +195,27 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
             macroData.parseData();
         }
     }
+    
+    @Override public void windowOpened(WindowEvent e) {}
+    @Override public void windowIconified(WindowEvent e) {}
+    @Override public void windowDeiconified(WindowEvent e) {}
+    @Override public void windowActivated(WindowEvent e) {}
+    @Override public void windowDeactivated(WindowEvent e) {}
+    
+    private java.io.File MFLfile;
+    private String pathname;
+    private MacroData macroData;
+    private boolean parseOnClose;
+    private boolean hasChanged;
+    
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel editPanel;
+    private javax.swing.JTextArea editTextArea;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JButton saveButton;
+    // End of variables declaration//GEN-END:variables
 
-    @Override
-    public void windowIconified(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowDeiconified(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowActivated(WindowEvent e) {
-        
-    }
-
-    @Override
-    public void windowDeactivated(WindowEvent e) {
-        
-    }
+    
+    
 }
