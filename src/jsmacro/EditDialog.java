@@ -2,7 +2,7 @@
  *
  * @author Ben Cochrane
  */
-package jmacro;
+package jsmacro;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.WindowEvent;
@@ -35,10 +35,6 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
         addWindowListener(this);
         hasChanged = false;
         this.setTitle(pathname);
-    }
-    
-    public void linkMacroData(MacroData md) {
-        macroData = md;
     }
     
     private void initTextArea() {
@@ -191,9 +187,6 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
 
     @Override
     public void windowClosed(WindowEvent e) {
-        if (parseOnClose) {
-            macroData.parseData();
-        }
     }
     
     @Override public void windowOpened(WindowEvent e) {}
@@ -204,7 +197,6 @@ public class EditDialog extends javax.swing.JFrame implements WindowListener {
     
     private java.io.File MFLfile;
     private String pathname;
-    private MacroData macroData;
     private boolean parseOnClose;
     private boolean hasChanged;
     

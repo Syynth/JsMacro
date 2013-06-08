@@ -1,4 +1,4 @@
-package jmacro;
+package jsmacro;
 
 import java.awt.AWTException;
 import java.awt.event.InputEvent;
