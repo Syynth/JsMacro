@@ -85,6 +85,9 @@ public class EditDialog extends JFrame implements WindowListener {
         editTextArea.setColumns(20);
         editTextArea.setRows(5);
         editTextArea.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                editTextAreaKeyTyped(evt);
+            }
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 editTextAreaKeyPressed(evt);
             }
@@ -138,16 +141,29 @@ public class EditDialog extends JFrame implements WindowListener {
     }//GEN-LAST:event_saveButtonActionPerformed
 
     private void editTextAreaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editTextAreaKeyPressed
+        if (evt.isControlDown()) {
+            if (evt.getKeyCode() == KeyEvent.VK_S) {
+                saveFile();
+            }
+        }
         if (!cache.equals(editTextArea.getText())) {
             hasChanged = true;
             this.setTitle("*" + pathname);
-            if (evt.isControlDown()) {
-                if (evt.getKeyCode() == KeyEvent.VK_S) {
-                    saveFile();
-                }
-            }
+        } else {
+            hasChanged = false;
+            this.setTitle(pathname);
         }
     }//GEN-LAST:event_editTextAreaKeyPressed
+
+    private void editTextAreaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_editTextAreaKeyTyped
+        if (!cache.equals(editTextArea.getText())) {
+            hasChanged = true;
+            this.setTitle("*" + pathname);
+        } else {
+            hasChanged = false;
+            this.setTitle(pathname);
+        }
+    }//GEN-LAST:event_editTextAreaKeyTyped
     
     private boolean saveFile() {
         try {

@@ -23,12 +23,12 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="234" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="257" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="jTabbedPane1" alignment="0" pref="346" max="32767" attributes="0"/>
+          <Component id="jTabbedPane1" alignment="0" pref="340" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -103,7 +103,7 @@
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="columns" type="int" value="20"/>
                 <Property name="rows" type="int" value="5"/>
-                <Property name="text" type="java.lang.String" value="@tab&#x9;&#x9;- Tab&#xa;@enter&#x9;&#x9;- Return&#xa;@forward&#x9;- F3&#xa;@back&#x9;&#x9;- F9&#xa;@backspace&#x9;- Backspace&#xa;@home&#x9;&#x9;- Home&#xa;@end&#x9;&#x9;- End&#xa;@up&#x9;&#x9;- Up&#xa;@down&#x9;&#x9;- Down&#xa;@left&#x9;&#x9;- Left&#xa;@right&#x9;&#x9;- Right&#xa;@capslock&#x9;- Caps Lock&#xa;@ctrl&#x9;&#x9;- Control&#xa;@shift&#x9;&#x9;- Shift&#xa;@alt&#x9;&#x9;- Alt&#xa;@escape&#x9;&#x9;- Escape"/>
+                <Property name="text" type="java.lang.String" value="@tab&#x9;&#x9;- Tab&#xa;@enter&#x9;&#x9;- Return&#xa;@forward&#x9;&#x9;- F3&#xa;@back&#x9;&#x9;- F9&#xa;@backspace&#x9;&#x9;- Backspace&#xa;@home&#x9;&#x9;- Home&#xa;@end&#x9;&#x9;- End&#xa;@up&#x9;&#x9;- Up&#xa;@down&#x9;&#x9;- Down&#xa;@left&#x9;&#x9;- Left&#xa;@right&#x9;&#x9;- Right&#xa;@capslock&#x9;&#x9;- Caps Lock&#xa;@ctrl&#x9;&#x9;- Control&#xa;@shift&#x9;&#x9;- Shift&#xa;@alt&#x9;&#x9;- Alt&#xa;@escape&#x9;&#x9;- Escape"/>
               </Properties>
             </Component>
           </SubComponents>

@@ -28,20 +28,26 @@ public class GlobalKeyListener implements NativeKeyListener {
         GlobalScreen.getInstance().addNativeKeyListener(this);
         return this;
     }
+    
+    private void toggleRun() {
+        switch (gui.getMacroState()) {
+            case Loading: break;
+            case Ready:
+                gui.setMacroState(JsMacroWindow.State.Running);
+                break;
+            case Running:
+                gui.setMacroState(JsMacroWindow.State.Loading);
+                break;
+        }
+    }
 
     @Override
     public void nativeKeyPressed(NativeKeyEvent nke) {
-        throw new UnsupportedOperationException("Not supported yet.");
+        switch (nke.getKeyCode()) {
+            case NativeKeyEvent.VK_F5: toggleRun(); break;
+        }
     }
-
-    @Override
-    public void nativeKeyReleased(NativeKeyEvent nke) {
-        throw new UnsupportedOperationException("Not supported yet.");
-    }
-
-    @Override
-    public void nativeKeyTyped(NativeKeyEvent nke) {
-        
-    }
+    @Override public void nativeKeyReleased(NativeKeyEvent nke) {}
+    @Override public void nativeKeyTyped(NativeKeyEvent nke) {}
     
 }

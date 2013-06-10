@@ -4,17 +4,23 @@
  */
 package jsmacro;
 
+import javax.swing.JFrame;
+import javax.swing.WindowConstants;
+
 /**
  *
  * @author bcochrane
  */
-public class InfoDialog extends javax.swing.JFrame {
+public class InfoDialog extends JFrame {
 
     /**
      * Creates new form InfoDialog
      */
     public InfoDialog() {
         initComponents();
+        this.setTitle("JsMacro Help");
+        this.setVisible(true);
+        this.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
     }
 
     /**
@@ -54,7 +60,7 @@ public class InfoDialog extends javax.swing.JFrame {
         jTextArea1.setEditable(false);
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
-        jTextArea1.setText("@tab\t\t- Tab\n@enter\t\t- Return\n@forward\t- F3\n@back\t\t- F9\n@backspace\t- Backspace\n@home\t\t- Home\n@end\t\t- End\n@up\t\t- Up\n@down\t\t- Down\n@left\t\t- Left\n@right\t\t- Right\n@capslock\t- Caps Lock\n@ctrl\t\t- Control\n@shift\t\t- Shift\n@alt\t\t- Alt\n@escape\t\t- Escape");
+        jTextArea1.setText("@tab\t\t- Tab\n@enter\t\t- Return\n@forward\t\t- F3\n@back\t\t- F9\n@backspace\t\t- Backspace\n@home\t\t- Home\n@end\t\t- End\n@up\t\t- Up\n@down\t\t- Down\n@left\t\t- Left\n@right\t\t- Right\n@capslock\t\t- Caps Lock\n@ctrl\t\t- Control\n@shift\t\t- Shift\n@alt\t\t- Alt\n@escape\t\t- Escape");
         jScrollPane1.setViewportView(jTextArea1);
 
         jTabbedPane1.addTab("Key Aliases", jScrollPane1);
@@ -63,11 +69,11 @@ public class InfoDialog extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 234, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 257, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 346, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 340, Short.MAX_VALUE)
         );
 
         pack();

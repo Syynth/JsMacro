@@ -1,6 +1,6 @@
 package jsmacro;
 
-import java.awt.event.ActionEvent;
+import java.awt.Color;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -14,6 +14,7 @@ public class JsMacroWindow extends javax.swing.JFrame {
 
     public JsMacroWindow() {
         initComponents();
+        background = titlePanel.getBackground();
         super.setLocationRelativeTo(null);
         new GlobalKeyListener(this).register();
     }
@@ -36,6 +37,32 @@ public class JsMacroWindow extends javax.swing.JFrame {
     
     private void launchEditor(String pathname) {
         EditDialog e = new EditDialog(pathname, true);
+    }
+    
+    private void launchInfo() {
+        InfoDialog i = new InfoDialog();
+    }
+    
+    public void setMacroState(State state) {
+        this.state = state;
+        switch (state) {
+            case Loading:
+                titlePanel.setBackground(background);
+                startButton.setText("Start");
+                break;
+            case Ready:
+                titlePanel.setBackground(Color.green);
+                startButton.setText("Stop");
+                break;
+            case Running:
+                titlePanel.setBackground(Color.red);
+                startButton.setText("Stop");
+                break;
+        }
+    }
+    
+    public State getMacroState() {
+        return state;
     }
     
     @SuppressWarnings("unchecked")
@@ -92,11 +119,21 @@ public class JsMacroWindow extends javax.swing.JFrame {
         });
 
         startButton.setText("Start");
-        startButton.setMaximumSize(new java.awt.Dimension(58, 23));
-        startButton.setMinimumSize(new java.awt.Dimension(58, 23));
-        startButton.setPreferredSize(new java.awt.Dimension(58, 23));
+        startButton.setMaximumSize(new java.awt.Dimension(58, 30));
+        startButton.setMinimumSize(new java.awt.Dimension(58, 30));
+        startButton.setPreferredSize(new java.awt.Dimension(58, 30));
+        startButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                startMacro(evt);
+            }
+        });
 
         infoButton.setText("Info");
+        infoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                getInfoDialog(evt);
+            }
+        });
 
         editDataButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/resource/editicon.png"))); // NOI18N
         editDataButton.setMaximumSize(new java.awt.Dimension(45, 30));
@@ -154,9 +191,15 @@ public class JsMacroWindow extends javax.swing.JFrame {
 
         playModeButton.setSelected(true);
         playModeButton.setText("Play Mode");
+        playModeButton.setMaximumSize(new java.awt.Dimension(99, 30));
+        playModeButton.setMinimumSize(new java.awt.Dimension(99, 30));
+        playModeButton.setPreferredSize(new java.awt.Dimension(99, 30));
 
         insertModeButton.setText("Insert Mode");
         insertModeButton.setEnabled(false);
+        insertModeButton.setMaximumSize(new java.awt.Dimension(112, 30));
+        insertModeButton.setMinimumSize(new java.awt.Dimension(112, 30));
+        insertModeButton.setPreferredSize(new java.awt.Dimension(112, 30));
 
         javax.swing.GroupLayout titlePanelLayout = new javax.swing.GroupLayout(titlePanel);
         titlePanel.setLayout(titlePanelLayout);
@@ -168,8 +211,8 @@ public class JsMacroWindow extends javax.swing.JFrame {
                     .addComponent(jProgressBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, titlePanelLayout.createSequentialGroup()
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(insertModeButton)
-                            .addComponent(playModeButton))
+                            .addComponent(insertModeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(playModeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(87, 200, Short.MAX_VALUE)
                         .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(infoButton, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -230,22 +273,23 @@ public class JsMacroWindow extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(titlePanelLayout.createSequentialGroup()
-                        .addComponent(playModeButton)
+                        .addComponent(playModeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(insertModeButton))
+                        .addComponent(insertModeButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(titlePanelLayout.createSequentialGroup()
                         .addComponent(infoButton)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(startButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(2, 2, 2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(resetPreviewButton)
-                    .addComponent(previewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(itemNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(itemPreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(previewButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(titlePanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(itemPreviewField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(itemNumberLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(resetPreviewButton))
                     .addComponent(nextButton, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jProgressBar1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
@@ -282,7 +326,6 @@ public class JsMacroWindow extends javax.swing.JFrame {
         if (!data.isEmpty()) {
             launchEditor(data);
         }
-        
     }//GEN-LAST:event_getDataFile
 
     private void getMacroFile(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getMacroFile
@@ -295,6 +338,18 @@ public class JsMacroWindow extends javax.swing.JFrame {
             launchEditor(macro);
         }
     }//GEN-LAST:event_getMacroFile
+
+    private void getInfoDialog(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getInfoDialog
+        launchInfo();
+    }//GEN-LAST:event_getInfoDialog
+
+    private void startMacro(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_startMacro
+        if (state == State.Loading) {
+            setMacroState(State.Ready);
+        } else {
+            setMacroState(State.Loading);
+        }
+    }//GEN-LAST:event_startMacro
 
     public static void main(String args[]) {
         try {
@@ -310,11 +365,18 @@ public class JsMacroWindow extends javax.swing.JFrame {
         });
     }
     
-    private static final String VERSION = "v0.0.1";
+    public enum State {
+        Loading,
+        Ready,
+        Running
+    }
     
+    private static final String VERSION = "v0.0.2";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private String data;
     private String macro;
+    private Color background;
+    private State state = State.Loading;
     private javax.swing.JButton dataButton;
     private javax.swing.JTextField dataField;
     private javax.swing.JLabel dataLabel;
