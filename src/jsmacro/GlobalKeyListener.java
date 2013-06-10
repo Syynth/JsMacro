@@ -27,7 +27,7 @@ public class GlobalKeyListener implements NativeKeyListener {
         try {
             GlobalScreen.registerNativeHook();
         } catch (NativeHookException ex) {
-            System.out.println("There was a problem registering the native hook;");
+            Console.Log("There was a problem registering native access the keyboard.");
             ex.printStackTrace();
             System.exit(1);
         }
@@ -41,9 +41,12 @@ public class GlobalKeyListener implements NativeKeyListener {
             case Ready:
                 gui.setMacroState(JsMacroWindow.State.Running);
                 macro = new Macro(new File(gui.getMacro()), new File(gui.getData()));
+                macro.run();
                 break;
             case Running:
                 gui.setMacroState(JsMacroWindow.State.Loading);
+                macro.abort();
+                macro = null;
                 break;
         }
     }

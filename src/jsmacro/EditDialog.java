@@ -14,7 +14,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.WindowConstants;
 
 public class EditDialog extends JFrame implements WindowListener {
 
@@ -54,7 +53,7 @@ public class EditDialog extends JFrame implements WindowListener {
                 editTextArea.setText(s);
                 cache = s;
             } catch (FileNotFoundException ex) {
-                Logger.getLogger(EditDialog.class.getName()).log(Level.SEVERE, null, ex);
+                saveFile();
             }
         } else {
             System.out.println("Pathname is empty!");

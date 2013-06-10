@@ -18,6 +18,10 @@ public class SmartRobot extends java.awt.Robot {
         this.mousePress(InputEvent.BUTTON1_MASK);
         this.mouseRelease(InputEvent.BUTTON1_MASK);
     }
+    
+    public void mouse(int x, int y) {
+        this.mouseMove(x, y);
+    }
 
     public void type(String text) {
         for (int i = 0; i < text.length(); i++) {
@@ -58,7 +62,8 @@ public class SmartRobot extends java.awt.Robot {
                     case '&': shift = true; code = KeyEvent.VK_7; break;
                     case '*': shift = true; code = KeyEvent.VK_8; break;
                     case '(': shift = true; code = KeyEvent.VK_9; break;
-                    case ')': shift = true; code = KeyEvent.VK_0; break;                        
+                    case ')': shift = true; code = KeyEvent.VK_0; break;
+                    case '\n': code = KeyEvent.VK_ENTER; break;
                     default: code = KeyEvent.VK_SPACE; break;
                 }
             }
@@ -88,7 +93,7 @@ public class SmartRobot extends java.awt.Robot {
         return 0;
     }
     
-    public static int getKeyCode(String s) {
+    public int getKeyCode(String s) {
         int code = 0;
         if (s.equals("tab")) { code = KeyEvent.VK_TAB; }
         if (s.equals("enter")) { code = KeyEvent.VK_ENTER; }

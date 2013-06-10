@@ -31,27 +31,31 @@ public class RecordModel {
         
     }
     
-    public int getActiveRecord() {
+    public String get(int n) {
+        return records.get(activeRecord).data[n >= 0 ? n < recordSize() ? n : recordSize() - 1 : 0];
+    }
+    
+    public int record() {
         return activeRecord;
     }
     
-    public void setActiveRecord(int n) {
+    public void setRecord(int n) {
         activeRecord = n >= 0 ? n < records.size() ? n : records.size() - 1 : 0;
     }
     
-    public int getRecordSize() {
+    public int recordSize() {
         return records.get(activeRecord).length();
     }
     
-    public int getNumberOfRecords() {
+    public int numRecords() {
         return records.size();
     }
     
-    public void increment() {
+    public void next() {
         activeRecord = activeRecord < records.size() - 1 ? activeRecord + 1 : records.size() - 1;
     }
     
-    public void decrement() {
+    public void previous() {
         activeRecord = activeRecord > 1 ? activeRecord - 1 : 0;
     }
     

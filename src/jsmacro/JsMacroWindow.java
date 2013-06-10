@@ -382,7 +382,7 @@ public class JsMacroWindow extends javax.swing.JFrame {
         Running
     }
     
-    private static final String VERSION = "v0.0.2";
+    private static final String VERSION = "v0.1.0";
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private String data;
     private String macro;
