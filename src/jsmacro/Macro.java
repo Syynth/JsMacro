@@ -22,23 +22,42 @@ public class Macro {
     private String script;
     private SmartRobot robot;
     
-    public Macro(File macro, File model) throws FileNotFoundException, IOException {
-        this.model = new RecordModel(model);
-        BufferedReader br = new BufferedReader(new FileReader(macro));
-        StringBuilder sb = new StringBuilder();
-        String line = br.readLine();
-        while (line != null) {
-            sb.append(line);
-            sb.append("\n");
-            line = br.readLine();
-        }
-        script = sb.toString();
-        br.close();
-        js = new ScriptEngineManager().getEngineByName("JavaScript");
+    public Macro(File macro, File model) {
+        BufferedReader br = null;
         try {
-            robot = new SmartRobot();
-        } catch (AWTException ex) {
-            System.out.println("Couldn't created the robot.");
+            try {
+                this.model = new RecordModel(model);
+            } catch (FileNotFoundException ex) {
+                Console.Log("Could not find .csv file.");
+            } catch (IOException ex) {
+                Console.Log("Could not open data file.");
+            }
+            br = new BufferedReader(new FileReader(macro));
+            StringBuilder sb = new StringBuilder();
+            String line = br.readLine();
+            while (line != null) {
+                sb.append(line);
+                sb.append("\n");
+                line = br.readLine();
+            }
+            script = sb.toString();
+            br.close();
+            js = new ScriptEngineManager().getEngineByName("JavaScript");
+            try {
+                robot = new SmartRobot();
+            } catch (AWTException ex) {
+                Console.Log("Couldn't created the robot.");
+            }
+        } catch (FileNotFoundException ex) {
+            Console.Log("Couldn't find the .js file.");
+        } catch (IOException ex) {
+            Console.Log("Oops! IOException in Macro constructor.");
+        }finally {
+            try {
+                br.close();
+            } catch (IOException | NullPointerException ex) {
+                Console.Log("Failed to close the .js file stream.");
+            }
         }
     }
     

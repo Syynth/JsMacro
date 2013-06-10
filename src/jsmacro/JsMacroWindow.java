@@ -15,6 +15,9 @@ public class JsMacroWindow extends javax.swing.JFrame {
     public JsMacroWindow() {
         initComponents();
         background = titlePanel.getBackground();
+        data = "";
+        macro = "";
+        Console.start();
         super.setLocationRelativeTo(null);
         new GlobalKeyListener(this).register();
     }
@@ -63,6 +66,14 @@ public class JsMacroWindow extends javax.swing.JFrame {
     
     public State getMacroState() {
         return state;
+    }
+    
+    public String getData() {
+        return data;
+    }
+    
+    public String getMacro() {
+        return macro;
     }
     
     @SuppressWarnings("unchecked")

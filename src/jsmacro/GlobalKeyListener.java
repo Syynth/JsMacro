@@ -1,5 +1,10 @@
 package jsmacro;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.jnativehook.GlobalScreen;
 import org.jnativehook.NativeHookException;
 import org.jnativehook.keyboard.NativeKeyEvent;
@@ -12,6 +17,7 @@ import org.jnativehook.keyboard.NativeKeyListener;
 public class GlobalKeyListener implements NativeKeyListener {
 
     private JsMacroWindow gui;
+    private Macro macro;
     
     public GlobalKeyListener(JsMacroWindow gui) {
         this.gui = gui;
@@ -34,6 +40,7 @@ public class GlobalKeyListener implements NativeKeyListener {
             case Loading: break;
             case Ready:
                 gui.setMacroState(JsMacroWindow.State.Running);
+                macro = new Macro(new File(gui.getMacro()), new File(gui.getData()));
                 break;
             case Running:
                 gui.setMacroState(JsMacroWindow.State.Loading);
