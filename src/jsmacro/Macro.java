@@ -22,16 +22,10 @@ public class Macro extends Thread {
     private SmartRobot robot;
     private JsBot jsbot;
     
-    public Macro(File macro, File model) {
+    public Macro(File macro, RecordModel model) {
         BufferedReader br = null;
+        this.model = model;
         try {
-            try {
-                this.model = new RecordModel(model);
-            } catch (FileNotFoundException ex) {
-                Console.Log("Could not find .csv file.");
-            } catch (IOException ex) {
-                Console.Log("Could not open data file.");
-            }
             br = new BufferedReader(new FileReader(macro));
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
@@ -59,6 +53,10 @@ public class Macro extends Thread {
                 Console.Log("Failed to close the .js file stream.");
             }
         }
+    }
+    
+    public RecordModel getModel() {
+        return model;
     }
 
     @Override

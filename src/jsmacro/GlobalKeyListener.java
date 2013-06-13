@@ -40,8 +40,9 @@ public class GlobalKeyListener implements NativeKeyListener {
             case Loading: break;
             case Ready:
                 gui.setMacroState(JsMacroWindow.State.Running);
-                macro = new Macro(new File(gui.getMacro()), new File(gui.getData()));
+                macro = new Macro(new File(gui.getMacro()), gui.genModel());
                 macro.run();
+                gui.setMacroState(JsMacroWindow.State.Loading);
                 break;
             case Running:
                 gui.setMacroState(JsMacroWindow.State.Loading);

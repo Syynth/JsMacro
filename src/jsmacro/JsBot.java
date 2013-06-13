@@ -19,7 +19,7 @@ public class JsBot {
         return this;
     }
     
-    public JsBot key(int c) {
+    public JsBot type(int c) {
         bot.keyPress(c);
         bot.keyRelease(c);
         return this;
